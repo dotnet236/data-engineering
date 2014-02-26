@@ -1,0 +1,37 @@
+<h1>Listing ledger_imports</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Purchaser name</th>
+      <th>Item description</th>
+      <th>Item price</th>
+      <th>Purchase count</th>
+      <th>Merchant address</th>
+      <th>Merchant name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ledger_imports.each do |ledger_import| %>
+      <tr>
+        <td><%= ledger_import.purchaser_name %></td>
+        <td><%= ledger_import.item_description %></td>
+        <td><%= ledger_import.item_price %></td>
+        <td><%= ledger_import.purchase_count %></td>
+        <td><%= ledger_import.merchant_address %></td>
+        <td><%= ledger_import.merchant_name %></td>
+        <td><%= link_to 'Show', ledger_import %></td>
+        <td><%= link_to 'Edit', edit_ledger_import_path(ledger_import) %></td>
+        <td><%= link_to 'Destroy', ledger_import, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ledger import', new_ledger_import_path %>
