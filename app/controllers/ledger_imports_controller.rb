@@ -1,3 +1,4 @@
+# Allows a user to import and persist a Tab Deliminited File
 class LedgerImportsController < ApplicationController
   before_action :set_ledger_import, only: [:show, :edit, :update, :destroy]
 
@@ -46,13 +47,14 @@ class LedgerImportsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_ledger_import
-      @ledger_import = LedgerImport.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def ledger_import_params
-      params.require(:ledger_import).permit(:purchaser_name, :item_description, :item_price, :purchase_count, :merchant_address, :merchant_name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_ledger_import
+    @ledger_import = LedgerImport.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def ledger_import_params
+    params.require(:ledger_import).permit(:tab_delimited_file)
+  end
 end

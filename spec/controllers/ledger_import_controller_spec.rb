@@ -1,8 +1,9 @@
+require 'spec_helper'
+
 describe LedgerImportsController do
   context '#create' do
-    it 'should return a 400 if no file is specified' do
-      get :create
-      response.status.should == 400
+    it 'should throw an error if no file is specified' do
+      expect { get :create }.to raise_error ActionController::ParameterMissing
     end
   end
 end
