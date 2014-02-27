@@ -1,4 +1,6 @@
-# Allows a user to import and persist a Tab Deliminited File
+require 'csv'
+
+# Allows a user to import and persist a Tab Delimited File
 class LedgerImportsController < ApplicationController
   before_action :set_ledger_import, only: [:show, :edit, :update, :destroy]
 
@@ -22,11 +24,13 @@ class LedgerImportsController < ApplicationController
 
   # POST /ledger_imports
   def create
-    @ledger_import = LedgerImport.new(ledger_import_params)
+    tds = ledger_import_params[:tab_delimited_file].read
+    import_results = LedgerImport.import_from_tab_delimited_string tds
 
-    if @ledger_import.save
-      redirect_to @ledger_import, notice: 'Ledger import was successfully created.'
+    if import_results[:failed_imports].count == 0
+      redirect_to action: :index, notice: 'Ledger was successfully imported.'
     else
+      flash[:error] = "The following rows failed to import \n" + import_results[:failed_imports].join("/t")
       render action: 'new'
     end
   end
