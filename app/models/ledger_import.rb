@@ -23,14 +23,22 @@ class LedgerImport < ActiveRecord::Base
 
   private
 
-  def self.create_ledger_from_tab_row(row)
-    LedgerImport.new(
-      purchaser_name: row[0],
-      item_description: row[1],
-      item_price: row[2],
-      purchase_count: row[3],
-      merchant_address: row[4],
-      merchant_name: row[5]
-    )
+  class << self
+    def create_ledger_from_tab_row(row)
+      LedgerImport.new(
+        purchaser_name: row[0],
+        item_description: row[1],
+        item_price: row[2],
+        purchase_count: row[3],
+        merchant_address: row[4],
+        merchant_name: row[5]
+      )
+    end
+
+    def total_gross_revenue(ledger_imports)
+      ledger_imports.map { |item|
+        item.item_price * item.purchase_count
+      }.sum()
+    end
   end
 end

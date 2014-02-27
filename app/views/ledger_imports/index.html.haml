@@ -1,0 +1,29 @@
+%h1 Listing ledger_imports
+%label
+  Total Gross Revenue:
+  = number_to_currency @total_gross_revenue, precision: 2
+%table
+  %thead
+    %tr
+      %th Purchaser name
+      %th Item description
+      %th Item price
+      %th Purchase count
+      %th Merchant address
+      %th Merchant name
+      %th
+      %th
+      %th
+  %tbody
+    - @ledger_imports.each do |ledger_import|
+      %tr
+        %td= ledger_import.purchaser_name
+        %td= ledger_import.item_description
+        %td= ledger_import.item_price
+        %td= ledger_import.purchase_count
+        %td= ledger_import.merchant_address
+        %td= ledger_import.merchant_name
+        %td= link_to 'Show', ledger_import
+        %td= link_to 'Destroy', ledger_import, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Ledger import', new_ledger_import_path

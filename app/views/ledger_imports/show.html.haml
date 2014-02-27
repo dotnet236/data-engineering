@@ -1,0 +1,22 @@
+%p#notice= notice
+%p
+  %strong Purchaser name:
+  = @ledger_import.purchaser_name
+%p
+  %strong Item description:
+  = @ledger_import.item_description
+%p
+  %strong Item price:
+  = @ledger_import.item_price
+%p
+  %strong Purchase count:
+  = @ledger_import.purchase_count
+%p
+  %strong Merchant address:
+  = @ledger_import.merchant_address
+%p
+  %strong Merchant name:
+  = @ledger_import.merchant_name
+= link_to 'Edit', edit_ledger_import_path(@ledger_import)
+|
+\#{link_to 'Back', ledger_imports_path}

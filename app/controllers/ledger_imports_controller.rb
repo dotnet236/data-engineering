@@ -7,6 +7,7 @@ class LedgerImportsController < ApplicationController
   # GET /ledger_imports
   def index
     @ledger_imports = LedgerImport.all
+    @total_gross_revenue = LedgerImport.total_gross_revenue @ledger_imports
   end
 
   # GET /ledger_imports/1
@@ -35,6 +36,7 @@ class LedgerImportsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_ledger_import
+    puts "Action = #{request[:action]}"
     @ledger_import = LedgerImport.find(params[:id])
   end
 
