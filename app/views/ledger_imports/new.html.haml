@@ -1,0 +1,5 @@
+%h1 Import a new ledger file
+
+= form_tag ledger_imports_path, :multipart=>true do
+  = file_field_tag :tab_delimited_file
+  = submit_tag "Import"

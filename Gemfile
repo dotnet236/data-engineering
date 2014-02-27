@@ -15,6 +15,10 @@ gem 'coffee-rails', '~> 4.0.0'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
+# Use HAML instead of ERB
+gem 'haml'
+gem 'haml-rails'
+
 group :development do
   gem 'rubocop'
 end

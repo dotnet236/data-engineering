@@ -9,18 +9,16 @@ describe LedgerImportsController do
     it 'should throw an error if the file is not correctly formated' do
       post(
         :create,
-        ledger_import: {
-          tab_delimited_file: fixture_file_upload('invalid_example_input.tab', 'text/tab')
-        })
+        tab_delimited_file: fixture_file_upload('invalid_example_input.tab', 'text/tab')
+      )
       expect(response).to render_template('new')
     end
 
     it 'should accept a correctly formated file' do
       post(
         :create,
-        ledger_import: {
-          tab_delimited_file: fixture_file_upload('valid_example_input.tab', 'text/tab')
-        })
+        tab_delimited_file: fixture_file_upload('valid_example_input.tab', 'text/tab')
+      )
       expect(response).to(
         redirect_to(
           action: :index,
