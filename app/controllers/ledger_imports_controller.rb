@@ -30,7 +30,9 @@ class LedgerImportsController < ApplicationController
     if import_results[:failed_imports].count == 0
       redirect_to action: :index, notice: 'Ledger was successfully imported.'
     else
-      flash[:error] = "The following rows failed to import \n" + import_results[:failed_imports].join("/t")
+      flash[:error] =
+        "The following rows failed to import \n
+        #{import_results[:failed_imports].join('/t')}"
       render action: 'new'
     end
   end
