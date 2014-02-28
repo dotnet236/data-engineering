@@ -35,7 +35,7 @@ $ git clone https://github.com/dotnet236/data-engineering
 
 Install ruby if prompted
 ```bash
-$ rvm install ruby-1.9.3-p386
+$ rvm install ruby-2.0.0-p353
 ```
 
 Bundle the project gems
@@ -75,4 +75,4 @@ and
 ```bash
 $ rubocop
 ```
-pass successfully
+complete successfully
