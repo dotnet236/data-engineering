@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-include Warden::Test::Helpers
-Warden.test_mode!
-
 describe 'Ledger import', type: :feature do
+  include Warden::Test::Helpers
+  Warden.test_mode!
+
   before :each do
-    user = User.create email: 'test@test.com', password: '12345678'
+    user = create :user
     login_as(user, scope: :user)
   end
 
@@ -17,11 +17,11 @@ describe 'Ledger import', type: :feature do
   end
 
   context 'create view' do
+    let(:item_count) { 4 }
+
     it 'should allow import of a properly formatted tab delimited ledger' do
       import_ledger
-
-      # TODO: Read line count from file
-      expect(page).to have_css('tr', count: 5)
+      expect(page).to have_css('tr', count: item_count + 1)
     end
   end
 

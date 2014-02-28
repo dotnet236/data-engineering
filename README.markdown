@@ -3,6 +3,8 @@
 </a>
 
 ## Project Description
+[Original Posting](https://github.com/lschallenges/data-engineering)
+
 Imagine that LivingSocial has just acquired a new company.  Unfortunately, the company has never stored their data in a database and instead uses a plain text file.  We need to create a way for the new subsidiary to import their data into a database.  Your task is to create a web interface that accepts file uploads, normalizes the data, and then stores it in a relational database.
 
 Here's what your web-based application must do:
@@ -63,7 +65,7 @@ $ rake spec:browser
 
 ## Contributing
 All contributions should be submitted in a pull request from your
-personal fork back this repository.
+personal fork back to this repository.
 
 Before submiting your pull request, please verify that running
 ```bash

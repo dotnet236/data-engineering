@@ -8,7 +8,10 @@ require 'capybara/poltergeist'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
-Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+Dir[
+  Rails.root.join('spec/support/**/*.rb'),
+  Rails.root.join('spec/factories/**/*.rb')
+].each { |f| require f }
 
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
@@ -28,6 +31,7 @@ RSpec.configure do |config|
 
   config.before(:each) do
     DatabaseCleaner.start
+    FactoryGirl.lint
   end
 
   config.after(:each) do
@@ -36,6 +40,9 @@ RSpec.configure do |config|
 
   # Capybara Configuration
   Capybara.javascript_driver = :poltergeist
+
+  # Factory Girl Configuration
+  config.include FactoryGirl::Syntax::Methods
 end
 
 def pause_page

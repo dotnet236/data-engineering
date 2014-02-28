@@ -3,7 +3,7 @@ require 'spec_helper'
 describe LedgerImportsController do
   context '#create' do
     before :each do
-      user = User.create email: 'test@test.com', password: '12345678'
+      user = create :user
       sign_in user
     end
 
