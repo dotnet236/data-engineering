@@ -3,7 +3,7 @@ require 'csv'
 # Allows a user to import and persist a Tab Delimited File
 class LedgerImportsController < ApplicationController
   before_action :set_ledger_import, only: [:show, :update, :destroy]
-  before_action :authenticate_user!
+  before_action :authenticate_user_with_oauth2!
 
   # GET /ledger_imports
   def index
@@ -24,7 +24,9 @@ class LedgerImportsController < ApplicationController
     import_results = LedgerImport.import_from_tab_delimited_string ledger_import_params.read
 
     if import_results[:failed_imports].count == 0
-      redirect_to action: :index, notice: 'Ledger was successfully imported.'
+      total_gross_revenue = LedgerImport.total_gross_revenue import_results[:successful_imports]
+      redirect_to action: :index
+      flash[:notice] = "Ledger successfully imported a total gross revenue $#{total_gross_revenue}"
     else
       flash[:error] =
         'The following rows failed to ' +
@@ -34,6 +36,10 @@ class LedgerImportsController < ApplicationController
   end
 
   private
+
+  def authenticate_user_with_oauth2!
+    user_signed_in? || redirect_to('/users/auth/google_oauth2')
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_ledger_import

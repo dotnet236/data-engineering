@@ -11,5 +11,7 @@
       = current_user.email
       ,
       = link_to "Sign out", destroy_user_session_path, :method => :delete
-    %p#notice= flash[:error]
+    %hr
+    %p#error= flash[:error]
+    %p#notice= flash[:notice]
     = yield

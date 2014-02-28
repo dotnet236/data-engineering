@@ -7,9 +7,7 @@ DataEngineering::Application.routes.draw do
     :users,
     controllers: {
       sessions: "sessions",
-      omniauth_callbacks: 'omniauth_callbacks',
-      sign_in: '/users/auth/google_oauth2',
-      sign_up: '/users/auth/google_oauth2'
+      omniauth_callbacks: 'omniauth_callbacks'
     })
 
 

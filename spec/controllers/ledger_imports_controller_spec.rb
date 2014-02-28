@@ -27,8 +27,7 @@ describe LedgerImportsController do
       expect(response).to(
         redirect_to(
           action: :index,
-          controller: :ledger_imports,
-          notice: 'Ledger was successfully imported.'
+          controller: :ledger_imports
         ))
     end
   end
