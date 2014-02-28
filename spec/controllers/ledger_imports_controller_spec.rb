@@ -2,6 +2,11 @@ require 'spec_helper'
 
 describe LedgerImportsController do
   context '#create' do
+    before :each do
+      user = User.create email: 'test@test.com', password: '12345678'
+      sign_in user
+    end
+
     it 'should throw an error if no file is specified' do
       expect { post :create }.to raise_error ActionController::ParameterMissing
     end

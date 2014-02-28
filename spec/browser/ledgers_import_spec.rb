@@ -1,6 +1,14 @@
 require 'spec_helper'
 
+include Warden::Test::Helpers
+Warden.test_mode!
+
 describe 'Ledger import', type: :feature do
+  before :each do
+    user = User.create email: 'test@test.com', password: '12345678'
+    login_as(user, scope: :user)
+  end
+
   def import_ledger
     visit '/ledger_imports/new'
     example_file = File.join Rails.root, 'spec/fixtures/valid_example_input.tab'

@@ -3,6 +3,7 @@ require 'csv'
 # Allows a user to import and persist a Tab Delimited File
 class LedgerImportsController < ApplicationController
   before_action :set_ledger_import, only: [:show, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /ledger_imports
   def index

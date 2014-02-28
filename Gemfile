@@ -19,6 +19,10 @@ gem 'jquery-rails'
 gem 'haml'
 gem 'haml-rails'
 
+# Authentication
+gem 'devise'
+gem 'omniauth-google-oauth2'
+
 group :development do
   gem 'rubocop'
 end
