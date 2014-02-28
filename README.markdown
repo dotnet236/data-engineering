@@ -59,6 +59,7 @@ $ rake
 $ rake spec:functional
 ```
 ### Browser Tests
+*Must install [PhantomJS](https://github.com/jonleighton/poltergeist/tree/v1.5.0#installing-phantomjs) first*
 ```bash
 $ rake spec:browser
 ```
