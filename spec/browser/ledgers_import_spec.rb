@@ -12,7 +12,7 @@ describe 'Ledger import', type: :feature do
     it 'should allow import of a properly formatted tab delimited ledger' do
       import_ledger
 
-      #TODO: Read line count from file
+      # TODO: Read line count from file
       expect(page).to have_css('tr', count: 5)
     end
   end

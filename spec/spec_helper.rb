@@ -4,6 +4,7 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 require 'capybara/rails'
 require 'capybara/rspec'
+require 'capybara/poltergeist'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -17,7 +18,6 @@ RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
-  config.use_transactional_fixtures = true
   config.infer_base_class_for_anonymous_controllers = false
   config.order = 'random'
 
@@ -34,13 +34,12 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
-  #Capybara Confirmation
-  #TODO: Use capybara headless webkit
-  Capybara.current_driver = :selenium
+  # Capybara Configuration
+  Capybara.javascript_driver = :poltergeist
 end
 
 def pause_page
   puts
-  puts "Type enter to continue"
+  puts 'Type enter to continue'
   $stdin.gets
 end

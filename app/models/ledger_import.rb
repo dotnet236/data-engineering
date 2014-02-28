@@ -36,9 +36,7 @@ class LedgerImport < ActiveRecord::Base
     end
 
     def total_gross_revenue(ledger_imports)
-      ledger_imports.map { |item|
-        item.item_price * item.purchase_count
-      }.sum()
+      ledger_imports.map { |item| item.item_price * item.purchase_count }.sum
     end
   end
 end
